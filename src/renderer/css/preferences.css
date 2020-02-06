@@ -1,0 +1,7 @@
+fieldset[name="directories"] {
+  display: grid;
+}
+
+fieldset[name="directories"] button {
+  font: 400 1rem 'Material Icons';
+}

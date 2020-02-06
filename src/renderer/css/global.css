@@ -1,0 +1,123 @@
+/* ---- FONT ---- */
+
+@font-face {
+	font-family: 'SNES';
+  src: url('../font/SNES-Italic.woff2') format('woff2');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('../font/Gotham-Book.woff2') format('woff2');
+  font-weight: normal;
+  font-style: none;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('../font/Gotham-Medium.woff2') format('woff2');
+  font-weight: bold;
+  font-style: none;
+}
+
+@font-face {
+  font-family: 'Material Icons';
+  src: url('../font/materialicons-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* ---- RESET ---- */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  user-select: none;
+}
+
+html, body, div, iframe,
+header, nav, main, section, article,
+figure, footer, address, aside,
+form, fieldset, legend, details, summary, label, input, textarea,
+table, thead, tbody, tr, th, td,
+h1, h2, h3, p, ul, li, a, button, span, img {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+html, body {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+html {
+  font: 300 16px Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-width: 360px;
+  background-color: #333;
+  color: #fff;
+}
+
+input[type="text"], textarea, button { border-radius: 0.1875rem; }
+
+input[type="text"], textarea {
+  padding: 0.3125rem;
+  background-color: #222;
+  color: #fff;
+  font-size: 1rem;
+  user-select: text;
+}
+
+textarea { resize: none; }
+
+button {
+  color: currentColor;
+  background-color: #222;
+}
+
+button:hover {
+  background-color: #777;
+}
+
+label {
+  display: block;
+  font-size: 0.875rem;
+}
+
+label:nth-last-of-type(n+2) { margin-bottom: 0.3125rem; }
+
+input[type="checkbox"] { appearance: none; }
+
+input[type="checkbox"]::after {
+  content: 'check_box_outline_blank';
+  display: inline-block;
+  color: #fff;
+  font: 400 1.125rem 'Material Icons';
+  vertical-align: -0.25rem;
+}
+
+input[type="checkbox"]:checked::after {
+  content: 'check_box';
+  color: #fc0c18;
+}
+
+input[type="checkbox"]:disabled::after { color: #ccc; }
+
+svg:not([fill]) { fill: currentColor; }
+
+:focus { outline-color: #fc0c18; }
+
+body:not(.accessible) :focus { outline: none; }
+
+::selection {
+  background-color: #fc0c18;
+  color: #fff;
+}
