@@ -1,25 +1,9 @@
-import React, { useContext }  from 'react'
+import React from 'react'
 import '../../css/index.css'
 
-import { PrefsProvider, PrefsContext } from '../../store/prefsStore'
-import { SSGProvider } from '../../store'
+import { PrefsProvider } from '../../store/prefsStore'
 import Header from './Header'
-import Form from './Form'
-
-
-const Main = () => {
-  const { preferences } = useContext(PrefsContext)
-
-  return (
-    <>
-      <main>
-        <SSGProvider preferences={preferences}>
-          <Form />
-        </SSGProvider>
-      </main>
-    </>
-  )
-}
+import Main from './Main'
 
 const App = () => (
   <>

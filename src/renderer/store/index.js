@@ -1,6 +1,5 @@
 import React, { createContext, useEffect, useReducer } from 'react'
 import { arrayOf, element, oneOfType } from 'prop-types'
-import uuidv1 from 'uuid/v1'
 import reducer from '../reducer'
 import { createNewSourceState, mergePreferences } from '../actions/main'
 
@@ -9,9 +8,11 @@ const initState = {
   sources: [createNewSourceState()],
   pasteSources: '',
   sourcePrefix: true,
-  sourceOnTop: false,
-  sourceOnTopAlert: true,
+  saving: false,
+  error: false,
+  message: false,
   renderOutput: '1280x720',
+  theme: 'dark',
   directories: []
 }
 

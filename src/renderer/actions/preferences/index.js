@@ -6,7 +6,8 @@ import {
   ADD_DIRECTORY,
   DELETE_DIRECTORY,
   UPDATE_LABEL,
-  CHOOSE_DIRECTORY
+  CHOOSE_DIRECTORY,
+  CHANGE_RADIO_VALUE
 } from '../types'
 
 const { interop } = window.SSG
@@ -21,6 +22,14 @@ export const loadPrefs = async () => {
     console.error(err)
   }
 }
+
+export const changeRadioValue = e => ({
+  type: CHANGE_RADIO_VALUE,
+  payload: {
+    name: e.target.name,
+    value: e.target.value
+  }
+})
 
 export const checkDefault = checkDirectory
 

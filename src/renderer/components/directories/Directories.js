@@ -1,10 +1,11 @@
 import React, { useContext } from 'react'
 
-import { SSGContext } from '../../store'
+import { PrefsContext } from '../../store/prefsStore'
 import Directory from './Directory'
 
 const Directories = () => {
-  const { directories, dispatch } = useContext(SSGContext)
+  const { preferences, dispatch } = useContext(PrefsContext)
+  const { directories } = preferences
 
   return (
     <fieldset name="directories">

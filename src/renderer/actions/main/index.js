@@ -85,12 +85,69 @@ export const checkDirectory = id => ({
   payload: id
 })
 
-export const generateSources = async (ctx, e) => {
-  e.preventDefault()
+const setSaving = () => ({
+  type: ACTION.UPDATE_STATE,
+  payload: {
+    saving: true,
+    error: false,
+    message: false
+  }
+})
 
-  const { directories } = ctx
+const success = () => ({
+  type: ACTION.UPDATE_STATE,
+  payload: {
+    sources: [createNewSourceState()],
+    pasteSources: '',
+    saving: false,
+    error: false,
+    message: 'Your sources are ready.'
+  }
+})
+
+const error = () => ({
+  type: ACTION.UPDATE_STATE,
+  payload: {
+    saving: false,
+    error: true,
+    message: 'Sources failed to save. Please try again.'
+  }
+})
+
+export const generateSources = ctx => async dispatch => {
+  let { directories } = ctx
   let sourceData = []
-  
+  let tempDir = false
+
+  if (directories.every(dir => !dir.checked)) {
+    const { filePaths, canceled } = await interop.dialog.chooseDirectory()
+
+    if (canceled) return
+
+    tempDir = {
+      checked: true,
+      directory: filePaths[0]
+    }
+
+    directories.push(tempDir)
+  } else {
+    for (const dir of directories) {
+      if (!dir.checked) continue
+
+      const exists = await interop.checkIfDirectoryExists(dir.directory)
+
+      if (exists) continue
+
+      const res = await interop.dialog.directoryNotFoundAlert(dir.directory)
+
+      dispatch(checkDirectory(dir.id))
+
+      if (res === 1) return false
+    }
+  }
+
+  dispatch(setSaving())
+
   if (ctx.pasteMode) {
     sourceData = convertSourcesToEntryMode(ctx.pasteSources)
   } else {
@@ -104,15 +161,21 @@ export const generateSources = async (ctx, e) => {
 
     if (ctx.sourcePrefix) src.text = `Source: ${src.text}`
 
-    src.data = buildSource(src.text, ctx.renderOutput, ctx.sourceOnTop)
+    src.data = buildSource(src.text, ctx.renderOutput)
     src.text = src.text.replace(/(?<=^Source):/, '')
 
     return src
   }))
 
   try {
-    await interop.saveSources({ sourceData, directories })
+    await interop.saveSources({
+      sourceData,
+      directories: directories.filter(dir => dir.checked)
+    })
+    dispatch(success())
   } catch (err) {
-    
+    dispatch(error())
+  } finally {
+    if (tempDir) directories.pop(tempDir)
   }
 }

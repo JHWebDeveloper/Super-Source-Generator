@@ -34,7 +34,9 @@ const mainConfig = {
 const rendererConfig = {
   mode: 'production',
   entry: {
-    index: path.join(__dirname, 'src', 'renderer', 'index.js')
+    index: path.join(__dirname, 'src', 'renderer', 'index.js'),
+    preferences: path.join(__dirname, 'src', 'renderer', 'preferences.js'),
+    global: path.join(__dirname, 'src', 'renderer', 'css', 'global.css')
   },
   output: {
     path: path.join(__dirname, 'build', 'renderer'),
@@ -82,6 +84,11 @@ const rendererConfig = {
       inject: false,
       filename: 'index.html',
       template: path.join('src', 'renderer', 'index.html')
+    }),
+    new HTMLWebpackPlugin({
+      inject: false,
+      filename: 'preferences.html',
+      template: path.join('src', 'renderer', 'preferences.html')
     })
   ],
   node: {

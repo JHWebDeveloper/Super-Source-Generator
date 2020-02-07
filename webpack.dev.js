@@ -10,6 +10,7 @@ module.exports = {
   mode: 'development',
   entry: {
     index: path.join(__dirname, 'src', 'renderer'),
+    preferences: path.join(__dirname, 'src', 'renderer', 'preferences.js'),
     global: path.join(__dirname, 'src', 'renderer', 'css', 'global.css')
   },
   output: {
@@ -61,6 +62,11 @@ module.exports = {
       inject: false,
       filename: 'index.html',
       template: path.join('src', 'renderer', 'index.html')
+    }),
+    new HTMLWebpackPlugin({
+      inject: false,
+      filename: 'preferences.html',
+      template: path.join('src', 'renderer', 'preferences.html')
     })
   ],
   devServer: {

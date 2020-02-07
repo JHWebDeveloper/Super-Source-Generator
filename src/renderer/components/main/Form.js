@@ -6,17 +6,30 @@ import { generateSources } from '../../actions/main'
 import Sources from '../sources/Sources'
 import Options from '../options/Options'
 import Directories from '../directories/Directories'
-import Generate from '../generate/Generate'
+import Spinner from '../misc/Spinner'
 
 const Form = () => {
   const ctx = useContext(SSGContext)
+  const { sources, pasteMode, pasteSources, saving, message } = ctx
+
+  const submitPreventDefault = e => {
+    e.preventDefault()
+    ctx.dispatch(generateSources(ctx))
+  }
 
   return (
-    <form onSubmit={e => generateSources(ctx, e)}>
+    <form onSubmit={submitPreventDefault}>
       <Sources />
       <Options />
       <Directories />
-      <Generate />
+      <button
+        type="submit"
+        name="generate"
+        title="Generate Sources"
+        disabled={saving || !sources.some(src => src.text) || (pasteMode && !pasteSources)}>
+        {saving ? <Spinner /> : 'Generate'}
+      </button>
+      {message && <p className={ctx.error ? 'error' : ''}>{message}</p>}
     </form>
   )
 }

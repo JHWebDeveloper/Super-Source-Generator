@@ -54,6 +54,27 @@ html, body {
   min-height: 100%;
 }
 
+:root {
+  --logo: #fc0c18;
+  --main-a: #dcdcdc;
+  --main-b: #ccc;
+  --font-color: #333;
+  --field-background: #fff;
+  --button-color: #ececec;
+  --button-highlight: #fff;
+  --disabled: #d3d3d3;
+}
+
+:root.dark {
+  --main-a: #333;
+  --main-b: #555;
+  --font-color: #fff;
+  --field-background: #222;
+  --button-color: #222;
+  --button-highlight: #777;
+  --disabled: #444;
+}
+
 html {
   font: 300 16px Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -62,29 +83,36 @@ html {
 
 body {
   min-width: 360px;
-  background-color: #333;
-  color: #fff;
+  background-color: var(--main-a);
+  color: var(--font-color);
 }
 
 input[type="text"], textarea, button { border-radius: 0.1875rem; }
 
 input[type="text"], textarea {
   padding: 0.3125rem;
-  background-color: #222;
-  color: #fff;
+  background-color: var(--field-background);
+  color: var(--font-color);
   font-size: 1rem;
   user-select: text;
 }
+
+input[type="text"]:matches(:read-only, ::placeholder),
+textarea::placeholder {
+  color: var(--main-b);
+}
+
+input[type="text"] { text-overflow: ellipsis; }
 
 textarea { resize: none; }
 
 button {
   color: currentColor;
-  background-color: #222;
+  background-color: var(--button-color);
 }
 
 button:hover {
-  background-color: #777;
+  background-color: var(--button-highlight);
 }
 
 label {
@@ -92,32 +120,32 @@ label {
   font-size: 0.875rem;
 }
 
-label:nth-last-of-type(n+2) { margin-bottom: 0.3125rem; }
+input:matches([type="checkbox"], [type="radio"]) { appearance: none; }
 
-input[type="checkbox"] { appearance: none; }
-
-input[type="checkbox"]::after {
-  content: 'check_box_outline_blank';
+input:matches([type="checkbox"], [type="radio"])::after {
   display: inline-block;
-  color: #fff;
+  color: var(--font-color);
   font: 400 1.125rem 'Material Icons';
   vertical-align: -0.25rem;
 }
 
-input[type="checkbox"]:checked::after {
-  content: 'check_box';
-  color: #fc0c18;
+input:matches([type="checkbox"], [type="radio"]):checked::after {
+  color: var(--logo);
 }
 
-input[type="checkbox"]:disabled::after { color: #ccc; }
+input[type="checkbox"]::after { content: 'check_box_outline_blank'; } 
+input[type="checkbox"]:checked::after { content: 'check_box' }
+
+input[type="radio"]::after { content: 'radio_button_unchecked'; } 
+input[type="radio"]:checked::after { content: 'radio_button_checked'; }
 
 svg:not([fill]) { fill: currentColor; }
 
-:focus { outline-color: #fc0c18; }
+:focus { outline-color: var(--logo); }
 
 body:not(.accessible) :focus { outline: none; }
 
 ::selection {
-  background-color: #fc0c18;
+  background-color: var(--logo);
   color: #fff;
 }

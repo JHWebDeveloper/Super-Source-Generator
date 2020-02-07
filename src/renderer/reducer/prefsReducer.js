@@ -10,11 +10,6 @@ export default (state, action) => {
         ...state,
         ...payload
       }
-    case ACTION.TOGGLE_OPTION:
-      return {
-        ...state,
-        [payload]: !state[payload]
-      }
     case ACTION.CHANGE_RADIO_VALUE:
       return {
         ...state,

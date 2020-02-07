@@ -37,12 +37,10 @@ export default (state, action) => {
     case ACTION.CHECK_DIRECTORY:
       return {
         ...state,
-        directories: state.directories.map(dir => (
-          payload !== dir.id ? dir : {
-            ...dir,
-            checked: !dir.checked
-          }
-        ))
+        directories: state.directories.map(dir => {
+          if (dir.id === payload) dir.checked = !dir.checked
+          return dir
+        })
       }
     default:
       return state

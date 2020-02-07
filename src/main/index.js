@@ -3,10 +3,12 @@ import url from 'url'
 import path from 'path'
 import { loadPrefs, savePrefs } from './modules/preferences'
 import { saveSources } from './modules/saveSources'
+import fileExistsPromise from './modules/fileExistsPromise'
 
 const dev = process.env.NODE_ENV === 'development'
 const mac = process.platform === 'darwin'
 let win = false
+let preferences = false
 
 const openWindow = prefs => new BrowserWindow({
   ...prefs,
@@ -21,21 +23,26 @@ const openWindow = prefs => new BrowserWindow({
   }
 })
 
-const mainURL = () => dev ? {
+const getURL = view => url.format(dev ? {
   protocol: 'http:',
   host: 'localhost:3000',
-  pathname: 'index.html',
+  pathname: `${view}.html`,
   slashes: true
 } : {
   protocol: 'file:',
-  pathname: path.join(__dirname, 'build', 'index.html'),
+  pathname: path.join(__dirname, 'renderer', `${view}.html`),
   slashes: true
-}
+})
 
 const createWindow = () => {
-  win = openWindow()
+  win = openWindow({
+    width: dev ? 952 : 476,
+    height: 600,
+    minWidth: 360,
+    minHeight: 460
+  })
 
-  win.loadURL(url.format(mainURL()))
+  win.loadURL(url.format(getURL('index')))
 
   const mainMenu = Menu.buildFromTemplate(mainMenuTemplate)
 
@@ -76,14 +83,51 @@ app.on('activate', () => {
   if (!win) createWindow()
 })
 
+const prefsMenuItem = [
+  { type: 'separator' },
+  {
+    label: 'Preferences',
+    accelerator: 'CmdOrCtrl+,',
+    click() {
+      const width = 592
+      const height = mac ? 339 : 356
+
+      preferences = openWindow({
+        parent: win,
+        width,
+        height,
+        minWidth: width,
+        maxWidth: dev ? false : width,
+        minHeight: height,
+        minimizable: false,
+        maximizable: false
+      })
+
+      preferences.loadURL(getURL('preferences'))
+
+      preferences.once('ready-to-show', () => {
+        preferences.show()
+      })
+
+      preferences.on('close', () => {
+        preferences = false
+      })
+
+      preferences.setMenu(null)
+    }
+  }
+]
+
 const mainMenuTemplate = [
   ...mac ? [{
     label: app.getName(),
     submenu: [
       {
-        label: 'About',
+        label: 'About Super Source Generator',
         role: 'about'
       },
+      ...prefsMenuItem,
+      { type: 'separator' },
       {
         label: 'Hide',
         role: 'hide'
@@ -112,7 +156,8 @@ const mainMenuTemplate = [
       { role: 'copy' },
       { role: 'paste' },
       { type: 'separator' },
-      { role: 'selectall' }
+      { role: 'selectall' },
+      ...(!mac ? prefsMenuItem : [])
     ]
   }
 ]
@@ -157,5 +202,13 @@ ipcMain.on('savePrefs', async (evt, newPrefs) => {
     win.webContents.send('syncPrefs', newPrefs)
   } catch (err) {
     evt.reply('savePrefsError')
+  }
+})
+
+ipcMain.handle('checkIfDirectoryExists', async (evt, dir) => {
+  try {
+    return fileExistsPromise(dir)
+  } catch (err) {
+    return false
   }
 })

@@ -7,9 +7,9 @@ import { loadPrefs, syncPreferences } from '../actions/preferences'
 const { interop } = window.SSG
 
 const initState = {
-  directories: [],
-  sourceOnTopWarning: true,
-  renderOutput: '1280x720'
+  renderOutput: '1280x720',
+  theme: 'dark',
+  directories: []
 }
 
 export const PrefsContext = createContext()
@@ -30,6 +30,10 @@ export const PrefsProvider = ({ children }) => {
       interop.removePrefsSyncListener()
     }
   }, [])
+
+  useEffect(() => {
+    document.documentElement.className = state.theme
+  }, [state.theme])
 
   return (
     <PrefsContext.Provider value={{

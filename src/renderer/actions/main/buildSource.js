@@ -1,33 +1,29 @@
-export default (src, output, onTop) => {
+const _720 = {
+  fontSize: 25,
+  txtX: 640, 
+  txtY: 684,
+  minW: 330,
+  pad: 40,
+  boxY: 659,
+  boxH: 33
+}
+
+const _1080 = {
+  fontSize: 37.5,
+  txtX: 960,
+  txtY: 1026,
+  minW: 495,
+  pad: 60,
+  boxY: 988.5,
+  boxH: 9.5
+}
+
+export default (src, output) => {
   const cnv = document.createElement('canvas')
   const ctx = cnv.getContext('2d')
   const [width, height] = output.split('x')
 
-  const [
-    fontSize,
-    txtX,
-    txtY,
-    minW,
-    pad,
-    boxY,
-    boxH
-  ] = height === '720' ? [
-    25,
-    640, 
-    onTop ? 53 : 684,
-    330,
-    40,
-    onTop ? 28 : 659,
-    33
-  ] : [
-    37.5,
-    960,
-    onTop ? 103.5 : 1026,
-    495,
-    60,
-    onTop ? 66 : 988.5,
-    49.5
-  ]
+  const { fontSize, txtX, txtY, minW, pad, boxY, boxH } = height === '720' ? _720 : _1080
 
   cnv.width = width
   cnv.height = height

@@ -33,6 +33,13 @@ interop.removePrefsSyncListener = () => {
   ipcRenderer.removeAllListeners('syncPrefs')
 }
 
+interop.closeCurrentWindow = () => {
+  remote.getCurrentWindow().close()
+}
+
+interop.checkIfDirectoryExists = async dir =>
+  ipcRenderer.invoke('checkIfDirectoryExists', dir)
+
 interop.dialog = Object.freeze({
   sourceOnTopAlert: async () => (await remote.dialog.showMessageBox({
     type: 'warning',
