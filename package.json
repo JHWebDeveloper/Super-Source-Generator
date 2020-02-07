@@ -14,7 +14,11 @@
     "start": "electron ."
   },
   "author": "Jonathan Hamilton",
-  "license": "MIT",
+  "license": "CC-BY-NC-4.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JHWebDeveloper/Super-Source-Generator.git"
+  },
   "dependencies": {
     "electron-updater": "^4.2.0",
     "prop-types": "^15.7.2",
