@@ -14,7 +14,7 @@ const Options = () => {
           name="sourcePrefix"
           onChange={e => dispatch(toggleOption(e))}
           checked={sourcePrefix} />
-        Add "Source: " to beginning
+        Add &quot;Source: &quot; to beginning
       </label>
     </fieldset>
   )

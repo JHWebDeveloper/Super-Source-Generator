@@ -115,7 +115,7 @@ const error = () => ({
 })
 
 export const generateSources = ctx => async dispatch => {
-  let { directories } = ctx
+  const { directories } = ctx
   let sourceData = []
   let tempDir = false
 

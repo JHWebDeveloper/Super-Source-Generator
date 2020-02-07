@@ -14,7 +14,7 @@ export const saveSources = async ({ sourceData, directories }) => (
     Promise.all(directories.map(async dir => (
       fsp.writeFile(
         `${path.join(dir.directory, cleanFileName(src.text))}.png`,
-        Buffer.from(src.data, 'base64'),
+        Buffer.from(src.data, 'base64')
       )
     )))
   )))

@@ -23,7 +23,7 @@ export default (state, action) => {
       return {
         ...state,
         sources: state.sources.map(src => (
-          payload.id !== src.id ? src: {
+          payload.id !== src.id ? src : {
             ...src,
             text: payload.text
           }

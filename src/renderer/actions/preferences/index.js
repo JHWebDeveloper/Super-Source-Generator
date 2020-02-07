@@ -14,10 +14,10 @@ const { interop } = window.SSG
 
 export const loadPrefs = async () => {
   try {    
-    return ({
+    return {
       type: LOAD_PREFS,
       payload: await interop.requestPrefs()
-    })
+    }
   } catch (err) {
     console.error(err)
   }

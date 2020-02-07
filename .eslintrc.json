@@ -46,12 +46,8 @@
     "no-console": ["error", {
       "allow": ["warn", "error"]
     }],
-    "no-extra-parens": ["error", "all", {
-      "enforceForArrowConditionals": false,
-      "ignoreJSX": "multi-line",
-      "returnAssign": false
-    }],
     "no-floating-decimal": "error",
+    "no-irregular-whitespace": ["error", { "skipRegExps": true }],
     "no-unneeded-ternary": "error",
     "no-useless-return": "error",
     "no-var": "error",

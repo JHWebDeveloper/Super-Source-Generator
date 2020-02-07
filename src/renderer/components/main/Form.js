@@ -26,7 +26,7 @@ const Form = () => {
         type="submit"
         name="generate"
         title="Generate Sources"
-        disabled={saving || !sources.some(src => src.text) || (pasteMode && !pasteSources)}>
+        disabled={saving || !sources.some(src => src.text) || pasteMode && !pasteSources}>
         {saving ? <Spinner /> : 'Generate'}
       </button>
       {message && <p className={ctx.error ? 'error' : ''}>{message}</p>}
