@@ -118,3 +118,24 @@ button[name="generate"] + p {
 }
 
 p.error { color: var(--logo); }
+
+.updater {
+  margin-top: 1.25rem;
+  text-align: center;
+}
+
+progress {
+  width: 16rem;
+  height: 0.875rem;
+  margin: 0.125rem 0;
+  border: 0.125rem solid var(--logo);
+  border-radius: 0.125rem;
+}
+
+::-webkit-progress-bar { background-color: transparent; }
+::-webkit-progress-value { background-color: var(--logo); }
+
+.updater > button {
+  margin-top: 0.625rem;
+  padding: 0.25rem 0.5rem;
+}

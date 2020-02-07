@@ -33,6 +33,31 @@ interop.removePrefsSyncListener = () => {
   ipcRenderer.removeAllListeners('syncPrefs')
 }
 
+interop.checkForUpdates = (onFound, onProgress) => {
+  ipcRenderer.once('updateFound', (evt, version) => onFound({
+    status: 'updating',
+    version
+  }))
+
+  ipcRenderer.on('updateProgress', (evt, percent) => onProgress(percent))
+
+  return sendMessage({
+    sendMsg: 'checkForUpdates',
+    recieveMessage: 'updateComplete',
+    errMsg: 'updateErr'
+  })
+}
+
+interop.removeUpdateListeners = () => {
+  ipcRenderer.removeAllListeners([
+    'checkForUpdates',
+    'updateFound',
+    'updateProgress',
+    'updateComplete',
+    'updateErr'
+  ])
+}
+
 interop.closeCurrentWindow = () => {
   remote.getCurrentWindow().close()
 }

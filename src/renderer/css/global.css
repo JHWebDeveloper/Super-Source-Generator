@@ -117,10 +117,14 @@ button:hover {
 
 label {
   display: block;
+  width: min-content;
   font-size: 0.875rem;
 }
 
-input:matches([type="checkbox"], [type="radio"]) { appearance: none; }
+input:matches([type="checkbox"], [type="radio"]),
+progress {
+  appearance: none;
+}
 
 input:matches([type="checkbox"], [type="radio"])::after {
   display: inline-block;
