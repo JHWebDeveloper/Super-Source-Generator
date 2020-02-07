@@ -4,6 +4,7 @@ import path from 'path'
 import { loadPrefs, savePrefs } from './modules/preferences'
 import { saveSources } from './modules/saveSources'
 import fileExistsPromise from './modules/fileExistsPromise'
+import update from './modules/update'
 
 const dev = process.env.NODE_ENV === 'development'
 const mac = process.platform === 'darwin'
@@ -37,7 +38,7 @@ const getURL = view => url.format(dev ? {
 const createWindow = () => {
   win = openWindow({
     width: dev ? 952 : 476,
-    height: 600,
+    height: 650,
     minWidth: 360,
     minHeight: 460
   })
@@ -210,5 +211,14 @@ ipcMain.handle('checkIfDirectoryExists', async (evt, dir) => {
     return fileExistsPromise(dir)
   } catch (err) {
     return false
+  }
+})
+
+ipcMain.on('checkForUpdates', async evt => {
+  try {
+    await update(evt)
+    evt.reply('updateComplete')
+  } catch (err) {
+    evt.reply('updateErr', err)
   }
 })
