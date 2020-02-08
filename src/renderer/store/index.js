@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useReducer } from 'react'
-import { arrayOf, element, oneOfType } from 'prop-types'
+import { arrayOf, bool, element, oneOfType, shape, string } from 'prop-types'
+
 import reducer from '../reducer'
 import { createNewSourceState, mergePreferences } from '../actions/main'
 
@@ -18,7 +19,7 @@ const initState = {
 
 export const SSGContext = createContext()
 
-export const SSGProvider = ({ children, preferences }) => {
+export const SSGProvider = ({ preferences, children }) => {
   const [state, dispatch] = useReducer(reducer, initState)
 
   useEffect(() => {
@@ -38,5 +39,14 @@ export const SSGProvider = ({ children, preferences }) => {
 }
 
 SSGProvider.propTypes = {
+  preferences: shape({
+    directories: arrayOf(shape({
+      checked: bool.isRequired,
+      directory: string.isRequired,
+      id: string.isRequired,
+      label: string.isRequired
+    })),
+    outputResolution: string
+  }),
   children: oneOfType([element, arrayOf(element)]).isRequired
 }

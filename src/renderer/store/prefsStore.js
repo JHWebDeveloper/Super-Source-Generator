@@ -1,8 +1,8 @@
 import React, { createContext, useEffect, useReducer } from 'react'
+import { arrayOf, element, oneOfType } from 'prop-types'
 
 import prefsReducer from '../reducer/prefsReducer'
 import { loadPrefs, syncPreferences } from '../actions/preferences'
-//import PrefsPropType from '../components/preferences/PrefsPropType'
 
 const { interop } = window.SSG
 
@@ -47,4 +47,6 @@ export const PrefsProvider = ({ children }) => {
   )
 }
 
-//PrefsProvider.propTypes = PrefsPropType
+PrefsProvider.propTypes = {
+  children: oneOfType([element, arrayOf(element)]).isRequired
+}

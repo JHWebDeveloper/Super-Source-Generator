@@ -1,5 +1,5 @@
 import React from 'react'
-import { shape, string, number, bool, func } from 'prop-types'
+import { bool, func, number, shape, string } from 'prop-types'
 
 import {
   checkDefault,

@@ -1,4 +1,5 @@
 import React from 'react'
+import { func, string } from 'prop-types'
 
 import { addSource, removeSource, updateSourceText } from '../../actions/main'
 
@@ -23,5 +24,11 @@ const SourceInput = ({ id, text, dispatch }) => (
       onClick={() => dispatch(removeSource(id))}>remove</button>
   </span>
 )
+
+SourceInput.propTypes = {
+  id: string.isRequired,
+  text: string.isRequired,
+  dispatch: func.isRequired
+}
 
 export default SourceInput

@@ -1,6 +1,7 @@
 import React from 'react'
 
 import RadioSet from '../misc/RadioSet'
+import { func, string } from 'prop-types'
 
 const _720  = '1280x720'
 const _1080 = '1920x1080'
@@ -43,5 +44,11 @@ const Options = ({ renderOutput, theme, dispatch }) => (
     </fieldset>
   </>
 )
+
+Options.propTypes = {
+  renderOutput: string.isRequired,
+  theme: string.isRequired,
+  dispatch: func.isRequired
+}
 
 export default Options
