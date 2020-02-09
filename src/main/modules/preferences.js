@@ -6,7 +6,7 @@ import fileExistsPromise from './fileExistsPromise'
 
 export const prefsDir = process.env.NODE_ENV === 'development'
   ? path.join('.', 'data')
-  : path.join(app.getPath('appData'), 'able2', 'prefs')
+  : path.join(app.getPath('appData'), 'super-source-generator', 'prefs')
 
 const prefsJSON = path.join(prefsDir, 'preferences.json')
 
