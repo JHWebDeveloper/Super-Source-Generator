@@ -2,6 +2,7 @@ const path = require('path')
 const nodeExternals = require('webpack-node-externals')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const postcssPresetEnv = require('postcss-preset-env')
 const cssnano = require('cssnano')
 
@@ -25,6 +26,12 @@ const mainConfig = {
       }
     ]
   },
+  plugins: [
+    new CopyWebpackPlugin([{
+      from: path.join('src', 'main', 'icons'),
+      to: path.join('assets', 'icons')
+    }])
+  ],
   node: {
     __dirname: false
   }
