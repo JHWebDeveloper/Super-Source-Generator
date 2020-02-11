@@ -30,7 +30,7 @@ const Help = () => (
         <p>This option is selected by default.</p>
         <h3>Save to Premade Folder</h3>
         <p>Selecting this option will save your generated source to the Premade Folder under News Resources on the K Drive when generated. The Premade folder is where Editors keep source overlays we may need in the future.</p>
-        <p>Not all source overlays should be saved to this folder. Sources that should be saved are ones we will likely need in the future (e.g. Source: Orlando Police Department), however if the source is something very specific, like a viewer's twitter handle, there is no need to save to this folder.</p>
+        <p>Not all source overlays should be saved to this folder. Sources that should be saved are ones we will likely need in the future (e.g. Source: Orlando Police Department), however if the source is something very specific, like a viewer&apos;s twitter handle, there is no need to save to this folder.</p>
         <p>To avoid archiving unimportant sources, this option is not selected by default.</p>
       </section>
       <section>
