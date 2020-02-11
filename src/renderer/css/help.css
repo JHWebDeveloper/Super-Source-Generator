@@ -1,0 +1,18 @@
+section {
+  width: 100%;
+  padding: 1.25rem 1rem;
+}
+
+section:nth-last-child(n+2) {
+	border-bottom: 0.125rem solid var(--main-b);
+}
+
+h2, h3 { font-weight: bold; }
+
+h2 { margin-bottom: 1rem; }
+
+h3, section > p:nth-last-of-type(n+2) { margin-bottom: 0.5rem; }
+
+section > p { font-size: 0.875rem; }
+
+p + h3 { margin-top: 1.25rem; }

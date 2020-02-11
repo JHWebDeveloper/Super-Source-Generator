@@ -35,12 +35,9 @@
   user-select: none;
 }
 
-html, body, div, iframe,
-header, nav, main, section, article,
-figure, footer, address, aside,
-form, fieldset, legend, details, summary, label, input, textarea,
-table, thead, tbody, tr, th, td,
-h1, h2, h3, p, ul, li, a, button, span, img {
+html, body, div, header, main, section, form,
+fieldset, legend, label, input, textarea, progress,
+h1, h2, h3, p, button, span, q {
   margin: 0;
   padding: 0;
   border: 0;

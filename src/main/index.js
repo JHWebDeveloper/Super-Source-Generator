@@ -10,6 +10,7 @@ const dev = process.env.NODE_ENV === 'development'
 const mac = process.platform === 'darwin'
 let win = false
 let preferences = false
+let help = false
 
 const openWindow = prefs => new BrowserWindow({
   ...prefs,
@@ -91,7 +92,7 @@ const prefsMenuItem = [
     accelerator: 'CmdOrCtrl+,',
     click() {
       const width = 592
-      const height = mac ? 339 : 356
+      const height = 356
 
       preferences = openWindow({
         parent: win,
@@ -159,6 +160,37 @@ const mainMenuTemplate = [
       { type: 'separator' },
       { role: 'selectall' },
       ...(!mac ? prefsMenuItem : [])
+    ]
+  },
+  {
+    label: 'Help',
+    submenu: [
+      {
+        label: 'SSG Help',
+        click() {
+          help = openWindow({
+            parent: win,
+            width: 476,
+            height: 650,
+            minWidth: 360,
+            minHeight: 460,
+            minimizable: false,
+            maximizable: false
+          })
+
+          help.loadURL(getURL('help'))
+
+          help.once('ready-to-show', () => {
+            help.show()
+          })
+
+          help.on('close', () => {
+            help = false
+          })
+
+          help.setMenu(null)
+        }
+      }
     ]
   }
 ]
