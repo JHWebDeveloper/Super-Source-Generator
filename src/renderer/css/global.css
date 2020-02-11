@@ -80,6 +80,7 @@ html {
 
 body {
   min-width: 360px;
+  padding-left: calc(100vw - 100%);
   background-color: var(--main-a);
   color: var(--font-color);
 }
