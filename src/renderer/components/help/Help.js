@@ -8,6 +8,7 @@ const Help = () => (
     <main>
       <section>
         <h2>About</h2>
+        <p>Version {window.SSG.interop.getVersion()}</p>
         <p>Super Source Generator is a web app developed by Jonathan Hamilton to help Ch9 employees produce single or multiple source overlays on the fly. No photoshop experience necessary.</p>
       </section>
       <section>
