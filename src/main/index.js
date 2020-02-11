@@ -5,6 +5,7 @@ import { loadPrefs, savePrefs } from './modules/preferences'
 import { saveSources } from './modules/saveSources'
 import fileExistsPromise from './modules/fileExistsPromise'
 import update from './modules/update'
+import insertPCStyles from './modules/insertPCStyles'
 
 const dev = process.env.NODE_ENV === 'development'
 const mac = process.platform === 'darwin'
@@ -49,6 +50,8 @@ const createWindow = () => {
   const mainMenu = Menu.buildFromTemplate(mainMenuTemplate)
 
   Menu.setApplicationMenu(mainMenu)
+
+  if (!mac) insertPCStyles(win)
 
   win.on('ready-to-show', () => {
     win.show()
@@ -106,6 +109,8 @@ const prefsMenuItem = [
       })
 
       preferences.loadURL(getURL('preferences'))
+
+      if (!mac) insertPCStyles(preferences)
 
       preferences.once('ready-to-show', () => {
         preferences.show()
@@ -179,6 +184,8 @@ const mainMenuTemplate = [
           })
 
           help.loadURL(getURL('help'))
+
+          if (!mac) insertPCStyles(preferences)
 
           help.once('ready-to-show', () => {
             help.show()
