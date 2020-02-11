@@ -91,16 +91,12 @@ const prefsMenuItem = [
     label: 'Preferences',
     accelerator: 'CmdOrCtrl+,',
     click() {
-      const width = 592
-      const height = 356
-
       preferences = openWindow({
         parent: win,
-        width,
-        height,
-        minWidth: width,
-        maxWidth: dev ? false : width,
-        minHeight: height,
+        width: 620,
+        height: 356,
+        minWidth: 590,
+        minHeight: 356,
         minimizable: false,
         maximizable: false
       })
