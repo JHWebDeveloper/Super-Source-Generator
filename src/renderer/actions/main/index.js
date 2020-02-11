@@ -46,6 +46,7 @@ const convertSourcesToPasteMode = sources => (
   sources
     .map(src => src.text)
     .filter(src => notBlank(src))
+    .reverse()
     .join(', ')
 )
 
@@ -54,6 +55,7 @@ const convertSourcesToEntryMode = pasteSources => {
     .split(/\s*,\s*/g)
     .filter(src => notBlank(src))
     .map(src => createNewSourceState(src))
+    .reverse()
 
   return srcs.length > 0 ? srcs : [createNewSourceState()]
 }

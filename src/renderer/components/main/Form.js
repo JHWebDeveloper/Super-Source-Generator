@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useCallback, useContext } from 'react'
 
 import { SSGContext } from '../../store'
 import { generateSources } from '../../actions/main'
@@ -17,8 +17,14 @@ const Form = () => {
     ctx.dispatch(generateSources(ctx))
   }
 
+  const onEnterPreventDefault = useCallback(e => {
+    if (e.keyCode === 13) e.preventDefault()
+  })
+
   return (
-    <form onSubmit={submitPreventDefault}>
+    <form
+      onSubmit={submitPreventDefault}
+      onKeyDown={onEnterPreventDefault}>
       <Sources />
       <Options />
       <Directories />
