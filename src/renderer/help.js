@@ -1,13 +1,9 @@
 import React from 'react'
 import { render } from 'react-dom'
 import Help from './components/help/Help'
+import initTabbedBrowsing from './initTabbedBrowsing'
 
-document.body.onkeydown = function (e) {
-  if (e.keyCode !== 9) return
-  
-  this.className = 'accessible'
-  this.onkeydown = false
-}
+initTabbedBrowsing()
 
 render(<Help />, document.querySelector('#root'))
 
