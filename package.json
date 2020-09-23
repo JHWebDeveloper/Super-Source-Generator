@@ -1,6 +1,6 @@
 {
   "name": "super-source-generator",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Super Source Generator is a web app developed by Jonathan Hamilton to help Ch9 employees produce single or multiple source overlays on the fly. No photoshop experience necessary.",
   "main": "build/main.js",
   "scripts": {
