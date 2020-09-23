@@ -27,10 +27,12 @@ const mainConfig = {
     ]
   },
   plugins: [
-    new CopyWebpackPlugin([{
-      from: path.join('src', 'main', 'icons'),
-      to: path.join('assets', 'icons')
-    }])
+    new CopyWebpackPlugin({
+			patterns: [{
+				from: path.join('src', 'main', 'icons'),
+				to: path.join('assets', 'icons')
+			}]
+		})
   ],
   node: {
     __dirname: false
