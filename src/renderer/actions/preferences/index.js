@@ -1,4 +1,4 @@
-import uuidv1 from 'uuid/v1'
+import { v1 as uuid } from 'uuid'
 import { checkDirectory } from '../main'
 
 import {
@@ -44,7 +44,7 @@ export const addNewDirectory = (index, e) => dispatch => {
   dispatch(addDirectory({
     pos: index + pos,
     newDir: {
-      id: uuidv1(),
+      id: uuid(),
       checked: false,
       label: '',
       directory: ''

@@ -1,12 +1,12 @@
 import React from 'react'
 import { string, func, arrayOf, shape, bool } from 'prop-types'
-import uuidv1 from 'uuid/v1'
+import { v1 as uuid } from 'uuid'
 
 import { changeRadioValue } from '../../actions/preferences'
 
 const RadioSet = ({ name, state, dispatch, buttons }) => (
   buttons.map(({ label, value, omit }) => (omit ? false :
-    <label key={uuidv1()}>
+    <label key={uuid()}>
       <input
         type="radio"
         name={name}

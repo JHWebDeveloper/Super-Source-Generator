@@ -1,7 +1,7 @@
 import { app } from 'electron'
 import { promises as fsp } from 'fs'
 import path from 'path'
-import uuidv1 from 'uuid/v1'
+import { v1 as uuid } from 'uuid'
 import fileExistsPromise from './fileExistsPromise'
 
 export const prefsDir = process.env.NODE_ENV === 'development'
@@ -17,7 +17,7 @@ const initPrefs = {
     {
       checked: true,
       directory: app.getPath('desktop'),
-      id: uuidv1(),
+      id: uuid(),
       label: 'Save to Desktop'
     }
   ]

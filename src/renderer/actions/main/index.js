@@ -1,4 +1,4 @@
-import uuidv1 from 'uuid/v1'
+import { v1 as uuid } from 'uuid'
 import * as ACTION from '../types'
 import buildSource from './buildSource'
 
@@ -10,7 +10,7 @@ export const mergePreferences = prefs => ({
 })
 
 export const createNewSourceState = (text = '') => ({
-  id: uuidv1(),
+  id: uuid(),
   text
 })
 
