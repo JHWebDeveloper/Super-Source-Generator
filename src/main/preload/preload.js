@@ -49,13 +49,11 @@ interop.checkForUpdates = (onFound, onProgress) => {
 }
 
 interop.removeUpdateListeners = () => {
-  ipcRenderer.removeAllListeners([
-    'checkForUpdates',
-    'updateFound',
-    'updateProgress',
-    'updateComplete',
-    'updateErr'
-  ])
+	ipcRenderer.removeAllListeners('checkForUpdates')
+	ipcRenderer.removeAllListeners('updateFound')
+	ipcRenderer.removeAllListeners('updateProgress')
+	ipcRenderer.removeAllListeners('updateComplete')
+	ipcRenderer.removeAllListeners('updateErr')
 }
 
 interop.closeCurrentWindow = () => {
