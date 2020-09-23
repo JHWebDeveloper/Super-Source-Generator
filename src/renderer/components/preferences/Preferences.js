@@ -7,27 +7,27 @@ import Directories from './Directories'
 import SavePrefs from './SavePrefs'
 
 const PrefsForm = () => {
-  const { preferences, dispatch } = useContext(PrefsContext)
-  const { renderOutput, theme, directories } = preferences
+	const { preferences, dispatch } = useContext(PrefsContext)
+	const { renderOutput, theme, directories } = preferences
 
-  return (
-    <form id="preferences" onSubmit={e => e.preventDefault()}>
-      <Options
-        renderOutput={renderOutput}
-        theme={theme}
-        dispatch={dispatch} />
-      <Directories
-        directories={directories}
-        dispatch={dispatch} />
-      <SavePrefs />
-    </form>
-  )
+	return (
+		<form id="preferences" onSubmit={e => e.preventDefault()}>
+			<Options
+				renderOutput={renderOutput}
+				theme={theme}
+				dispatch={dispatch} />
+			<Directories
+				directories={directories}
+				dispatch={dispatch} />
+			<SavePrefs />
+		</form>
+	)
 }
 
 const Preferences = () => (
-  <PrefsProvider>
-    <PrefsForm />
-  </PrefsProvider>
+	<PrefsProvider>
+		<PrefsForm />
+	</PrefsProvider>
 )
 
 export default Preferences

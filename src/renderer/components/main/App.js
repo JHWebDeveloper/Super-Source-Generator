@@ -7,13 +7,13 @@ import Update from '../update/Update'
 import Main from './Main'
 
 const App = () => (
-  <>
-    <Header />
-    <Update />
-    <PrefsProvider>
-      <Main />
-    </PrefsProvider>
-  </>
+	<>
+		<Header />
+		<Update />
+		<PrefsProvider>
+			<Main />
+		</PrefsProvider>
+	</>
 )
 
 export default App

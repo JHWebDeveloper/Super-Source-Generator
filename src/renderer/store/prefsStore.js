@@ -7,46 +7,46 @@ import { loadPrefs, syncPreferences } from '../actions/preferences'
 const { interop } = window.SSG
 
 const initState = {
-  renderOutput: '1280x720',
-  theme: 'dark',
-  directories: []
+	renderOutput: '1280x720',
+	theme: 'dark',
+	directories: []
 }
 
 export const PrefsContext = createContext()
 
 export const PrefsProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(prefsReducer, initState)
+	const [state, dispatch] = useReducer(prefsReducer, initState)
 
-  useEffect(() => {
-    (async () => {
-      dispatch(await loadPrefs())
-    })()
+	useEffect(() => {
+		(async () => {
+			dispatch(await loadPrefs())
+		})()
 
-    interop.addPrefsSyncListener(newPrefs => {
-      dispatch(syncPreferences(newPrefs))
-    })
+		interop.addPrefsSyncListener(newPrefs => {
+			dispatch(syncPreferences(newPrefs))
+		})
 
-    return () => {
-      interop.removePrefsSyncListener()
-    }
-  }, [])
+		return () => {
+			interop.removePrefsSyncListener()
+		}
+	}, [])
 
-  useEffect(() => {
-    document.documentElement.className = state.theme
-  }, [state.theme])
+	useEffect(() => {
+		document.documentElement.className = state.theme
+	}, [state.theme])
 
-  return (
-    <PrefsContext.Provider value={{
-      preferences: state,
-      dispatch: input => (
-        input instanceof Function ? input(dispatch, state) : dispatch(input)
-      )
-    }}>
-      { children }
-    </PrefsContext.Provider>
-  )
+	return (
+		<PrefsContext.Provider value={{
+			preferences: state,
+			dispatch: input => (
+				input instanceof Function ? input(dispatch, state) : dispatch(input)
+			)
+		}}>
+			{ children }
+		</PrefsContext.Provider>
+	)
 }
 
 PrefsProvider.propTypes = {
-  children: oneOfType([element, arrayOf(element)]).isRequired
+	children: oneOfType([element, arrayOf(element)]).isRequired
 }

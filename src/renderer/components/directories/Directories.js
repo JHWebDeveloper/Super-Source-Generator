@@ -4,19 +4,19 @@ import { PrefsContext } from '../../store/prefsStore'
 import Directory from './Directory'
 
 const Directories = () => {
-  const { preferences, dispatch } = useContext(PrefsContext)
-  const { directories } = preferences
+	const { preferences, dispatch } = useContext(PrefsContext)
+	const { directories } = preferences
 
-  return (
-    <fieldset name="directories">
-      {directories.map(dir => (
-        <Directory
-          key={dir.id}
-          dispatch={dispatch}
-          {...dir} />
-      ))}
-    </fieldset>
-  )
+	return (
+		<fieldset name="directories">
+			{directories.map(dir => (
+				<Directory
+					key={dir.id}
+					dispatch={dispatch}
+					{...dir} />
+			))}
+		</fieldset>
+	)
 }
 
 export default Directories

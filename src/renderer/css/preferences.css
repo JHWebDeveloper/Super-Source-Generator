@@ -3,28 +3,28 @@ form { padding: 1rem 0; }
 fieldset, #save { padding: 0.75rem 1rem; }
 
 fieldset:not([name="directories"]) {
-  display: inline-block;
+	display: inline-block;
 }
 
 legend {
-  margin-left: -0.25rem;
-  font-weight: 600;
+	margin-left: -0.25rem;
+	font-weight: 600;
 }
 
 fieldset > label { margin-bottom: 0.25rem }
 
 fieldset > label > input:matches([type="radio"], [type="checkbox"]) {
-  margin-right: 0.25rem;
+	margin-right: 0.25rem;
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: min-content min-content min-content auto min-content auto min-content min-content;
-  grid-gap: 0.25rem;
+	display: grid;
+	grid-template-columns: min-content min-content min-content auto min-content auto min-content min-content;
+	grid-gap: 0.25rem;
 }
 
 .grid > :matches(button, input[type="text"], input[type="checkbox"]) {
-  height: 1.5rem;
+	height: 1.5rem;
 }
 
 .grid > :matches(button, input[type="checkbox"]) { width: 1.5rem; }
@@ -32,9 +32,9 @@ fieldset > label > input:matches([type="radio"], [type="checkbox"]) {
 .grid > button { font: 400 1rem 'Material Icons'; }
 
 .grid > input[type="checkbox"] {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 #default { grid-column: 1 / span 3; }
@@ -43,22 +43,22 @@ fieldset > label > input:matches([type="radio"], [type="checkbox"]) {
 
 button[name="up"]:nth-of-type(4),
 button[name="down"]:last-of-type {
-  visibility: hidden;
+	visibility: hidden;
 }
 
 #save {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: var(--main-a);
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background-color: var(--main-a);
 }
 
 #save > button {
-  width: 4rem;
-  height: 1.75rem;
-  margin-right: 0.5rem;
-  padding: 0.25rem;
-  vertical-align: middle;
+	width: 4rem;
+	height: 1.75rem;
+	margin-right: 0.5rem;
+	padding: 0.25rem;
+	vertical-align: middle;
 }
 
 #save svg { height: 100%; }

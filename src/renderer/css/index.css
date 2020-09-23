@@ -1,141 +1,141 @@
 header { padding-top: 2.5rem; }
 
 h1 {
-  width: min-content;
-  margin: auto;
-  color: var(--logo);
-  font: italic 4rem 'SNES', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  line-height: 46px;
+	width: min-content;
+	margin: auto;
+	color: var(--logo);
+	font: italic 4rem 'SNES', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	line-height: 46px;
 }
 
 h1 > span {
-  display: flex;
-  align-items: center;
-  width: 230px;
-  height: 1.5rem;
-  padding: 1px 6px 0;
-  background: var(--logo);
-  color: #fff;
-  font-size: 1.5rem;
-  letter-spacing: 19px;
+	display: flex;
+	align-items: center;
+	width: 230px;
+	height: 1.5rem;
+	padding: 1px 6px 0;
+	background: var(--logo);
+	color: #fff;
+	font-size: 1.5rem;
+	letter-spacing: 19px;
 }
 
 header > p {
-  margin-top: 0.25rem;
-  font-size: 0.75rem;
-  text-align: center;
+	margin-top: 0.25rem;
+	font-size: 0.75rem;
+	text-align: center;
 }
 
 form { padding: 2rem; }
 
 fieldset[name="sources"] {
-  overflow-y: auto;
-  height: 13.0625rem;
-  border: 0.125rem solid var(--main-b);
-  border-radius: 0.1875rem;
-  font-size: 0;
+	overflow-y: auto;
+	height: 13.0625rem;
+	border: 0.125rem solid var(--main-b);
+	border-radius: 0.1875rem;
+	font-size: 0;
 }
 
 fieldset[name="sources"] > textarea {
-  overflow: auto;
-  width: calc(100% - 0.625rem);
-  height: calc(100% - 0.625rem);
-  margin: 0.3125rem;
+	overflow: auto;
+	width: calc(100% - 0.625rem);
+	height: calc(100% - 0.625rem);
+	margin: 0.3125rem;
 }
 
 fieldset[name="sources"] > span {
-  display: grid;
-  grid-template-columns: auto min-content;
-  grid-gap: 0.3125rem;
-  padding: 0.3215rem;
+	display: grid;
+	grid-template-columns: auto min-content;
+	grid-gap: 0.3125rem;
+	padding: 0.3215rem;
 }
 
 fieldset[name="sources"] > span:nth-of-type(even) {
-  background-color: var(--main-b);
+	background-color: var(--main-b);
 }
 
 fieldset[name="sources"] :matches(input[type="text"], button) {
-  height: 1.75rem;
+	height: 1.75rem;
 }
 
 fieldset[name="sources"] button {
-  width: 1.75rem;
-  font: 400 1rem 'Material Icons';
+	width: 1.75rem;
+	font: 400 1rem 'Material Icons';
 }
 
 fieldset[name="sources"] > span:nth-of-type(n+2) > button[name="add-source"],
 fieldset[name="sources"] > span:first-of-type > button[name="remove-source"] {
-  display: none;
+	display: none;
 }
 
 fieldset[name="sources"] + button {
-  display: flex;
-  align-items: center;
-  position: relative;
-  left: calc(100% - 6.25rem);
-  background-color: transparent;
-  font-size: 0.625rem;
+	display: flex;
+	align-items: center;
+	position: relative;
+	left: calc(100% - 6.25rem);
+	background-color: transparent;
+	font-size: 0.625rem;
 }
 
 fieldset[name="sources"] + button > svg {
-  height: 1.5rem;
-  margin: 0 0.1875rem;
+	height: 1.5rem;
+	margin: 0 0.1875rem;
 }
 
 fieldset[name="sources"] ~ fieldset,
 button[name="generate"] {
-  max-width: 400px;
-  margin: auto;
+	max-width: 400px;
+	margin: auto;
 }
 
 fieldset:matches([name="options"], [name="directories"]) label {
-  display: block;
-  margin-bottom: 0.5rem;
+	display: block;
+	margin-bottom: 0.5rem;
 }
 
 fieldset:matches([name="options"], [name="directories"]) input[type="checkbox"] {
-  margin-right: 0.3125rem;
+	margin-right: 0.3125rem;
 }
 
 button[name="generate"] {
-  display: block;
-  width: 100%;
-  height: 2.25rem;
-  margin-top: 1rem;
-  padding: 0.25rem;
+	display: block;
+	width: 100%;
+	height: 2.25rem;
+	margin-top: 1rem;
+	padding: 0.25rem;
 }
 
 button[name="generate"]:disabled {
-  background-color: var(--disabled);
-  color: var(--main-b);
+	background-color: var(--disabled);
+	color: var(--main-b);
 }
 
 button[name="generate"] > svg { height: 100%; }
 
 button[name="generate"] + p {
-  margin-top: 0.5rem;
-  text-align: center;
+	margin-top: 0.5rem;
+	text-align: center;
 }
 
 p.error { color: var(--logo); }
 
 .updater {
-  margin-top: 1.25rem;
-  text-align: center;
+	margin-top: 1.25rem;
+	text-align: center;
 }
 
 progress {
-  width: 16rem;
-  height: 0.875rem;
-  margin: 0.125rem 0;
-  border: 0.125rem solid var(--logo);
-  border-radius: 0.125rem;
+	width: 16rem;
+	height: 0.875rem;
+	margin: 0.125rem 0;
+	border: 0.125rem solid var(--logo);
+	border-radius: 0.125rem;
 }
 
 ::-webkit-progress-bar { background-color: transparent; }
 ::-webkit-progress-value { background-color: var(--logo); }
 
 .updater > button {
-  margin-top: 0.625rem;
-  padding: 0.25rem 0.5rem;
+	margin-top: 0.625rem;
+	padding: 0.25rem 0.5rem;
 }
