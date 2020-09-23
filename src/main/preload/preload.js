@@ -1,4 +1,4 @@
-import { ipcRenderer, remote } from 'electron'
+import { ipcRenderer, remote, contextBridge } from 'electron'
 import sendMessage from './sendMessage'
 
 const interop = {}
@@ -138,6 +138,16 @@ interop.setContextMenu = () => {
   }
 }
 
-window.SSG = Object.freeze({
-  interop: Object.freeze(interop)
+// ---- ATTACH ALL TO RENDERER--------
+
+const nameSpace = 'SSG'
+
+const freeze = Object.freeze({
+	interop: Object.freeze(interop)
 })
+
+if (process.env.NODE_ENV === 'development') {
+	window[nameSpace] = freeze
+} else {
+	contextBridge.exposeInMainWorld(nameSpace, freeze)
+}
