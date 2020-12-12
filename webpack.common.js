@@ -1,6 +1,7 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const postcssPresetEnv = require('postcss-preset-env')
 
 const rendererPath = path.resolve('src', 'renderer')
@@ -71,6 +72,14 @@ module.exports = {
 			inject: false,
 			filename: 'help.html',
 			template: path.join(rendererPath, 'help.html')
+		}),
+		new CopyWebpackPlugin({
+			patterns: [
+				{
+					from: path.join(rendererPath, 'font'),
+					to: path.join('assets', 'font')
+				}
+			]
 		})
 	],
 }
