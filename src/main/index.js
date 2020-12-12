@@ -48,7 +48,7 @@ const createWindow = () => {
 		minHeight: 460
 	})
 
-	win.loadURL(url.format(getURL('index')))
+	win.loadURL(getURL())
 
 	const mainMenu = Menu.buildFromTemplate(mainMenuTemplate)
 
@@ -201,7 +201,7 @@ const mainMenuTemplate = [
 	}
 ]
 
-if (dev) {
+//if (dev) {
 	mainMenuTemplate.push({
 		label: 'Developer Tools',
 		submenu: [
@@ -216,7 +216,7 @@ if (dev) {
 			}
 		]
 	})
-}
+//}
 
 ipcMain.on('saveSources', async (evt, data) => {
 	try {
