@@ -56,8 +56,8 @@ interop.removeUpdateListeners = () => {
 	ipcRenderer.removeAllListeners('updateErr')
 }
 
-interop.closeCurrentWindow = () => {
-	remote.getCurrentWindow().close()
+interop.closePreferences = () => {
+	ipcRenderer.send('closePrefs')
 }
 
 interop.checkIfDirectoryExists = async dir => ipcRenderer.invoke('checkIfDirectoryExists', dir)
