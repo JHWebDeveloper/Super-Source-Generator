@@ -261,6 +261,10 @@ ipcMain.on('checkForUpdates', async evt => {
 	}
 })
 
+ipcMain.on('closePrefs', () => {
+	preferences.close()
+})
+
 ipcMain.handle('getVersion', () => app.getVersion())
 
 ipcMain.handle('showOpenDialog', (evt, opts) => dialog.showOpenDialog(opts))
