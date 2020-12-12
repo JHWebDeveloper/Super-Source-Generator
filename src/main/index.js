@@ -201,7 +201,7 @@ const mainMenuTemplate = [
 	}
 ]
 
-//if (dev) {
+if (dev) {
 	mainMenuTemplate.push({
 		label: 'Developer Tools',
 		submenu: [
@@ -216,7 +216,7 @@ const mainMenuTemplate = [
 			}
 		]
 	})
-//}
+}
 
 ipcMain.on('saveSources', async (evt, data) => {
 	try {
