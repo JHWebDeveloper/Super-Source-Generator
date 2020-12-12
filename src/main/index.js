@@ -263,6 +263,8 @@ ipcMain.on('checkForUpdates', async evt => {
 
 ipcMain.handle('getVersion', () => app.getVersion())
 
+ipcMain.handle('showOpenDialog', (evt, opts) => dialog.showOpenDialog(opts))
+
 ipcMain.handle('showMessageBox', (evt, opts) => dialog.showMessageBox(opts))
 
 const setContextMenu = () => {
