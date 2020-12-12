@@ -286,7 +286,7 @@ const setContextMenu = () => {
 		new MenuItem({ role: 'selectAll' })
 	]
 
-	if (devtools) {
+	if (dev) {
 		inspectMenu = new Menu()
 		inspectMenu.append(...inspect)
 	}
@@ -300,7 +300,7 @@ const setContextMenu = () => {
 
 		if (isTextElement) {
 			textEditor.popup(BrowserWindow.getFocusedWindow())
-		} else if (devtools) {
+		} else if (dev) {
 			inspectMenu.popup(BrowserWindow.getFocusedWindow())
 		}
 	}
