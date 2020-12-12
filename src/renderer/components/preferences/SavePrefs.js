@@ -29,7 +29,7 @@ const SavePreferences = () => {
 			<button
 				type="button"
 				name="close-prefs"
-				onClick={interop.closePrefs}
+				onClick={interop.closePreferences}
 				title="Close preferences">
 				Close
 			</button>
