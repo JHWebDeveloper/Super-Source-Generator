@@ -1,4 +1,4 @@
-import { app, BrowserWindow, Menu, ipcMain } from 'electron'
+import { app, BrowserWindow, Menu, MenuItem, ipcMain } from 'electron'
 import url from 'url'
 import path from 'path'
 import { loadPrefs, savePrefs } from './modules/preferences'
@@ -260,3 +260,50 @@ ipcMain.on('checkForUpdates', async evt => {
 		evt.reply('updateErr', err)
 	}
 })
+
+const setContextMenu = () => {
+	const textEditor = new Menu()
+	let pos = [0, 0]
+	let inspectMenu = []
+
+	const inspect = !dev ? [] : [
+		new MenuItem({
+			id: 0,
+			label: 'Inspect Element',
+			click() {
+				BrowserWindow.getFocusedWindow().inspectElement(...pos)
+			}
+		}),
+		new MenuItem({ type: 'separator' })
+	]
+
+	const textEditorItems = [
+		...inspect,
+		new MenuItem({ role: 'cut' }),
+		new MenuItem({ role: 'copy' }),
+		new MenuItem({ role: 'paste' }),
+		new MenuItem({ type: 'separator' }),
+		new MenuItem({ role: 'selectAll' })
+	]
+
+	if (devtools) {
+		inspectMenu = new Menu()
+		inspectMenu.append(...inspect)
+	}
+
+	for (const item of textEditorItems) {
+		textEditor.append(item)
+	}
+
+	return (evt, { isTextElement, x, y }) => {
+		pos = [x, y]
+
+		if (isTextElement) {
+			textEditor.popup(BrowserWindow.getFocusedWindow())
+		} else if (devtools) {
+			inspectMenu.popup(BrowserWindow.getFocusedWindow())
+		}
+	}
+}
+
+ipcMain.handle('getContextMenu', setContextMenu())
