@@ -65,25 +65,25 @@ interop.checkIfDirectoryExists = async dir => ipcRenderer.invoke('checkIfDirecto
 interop.getVersion = () => ipcRenderer.invoke('getVersion')
 
 interop.dialog = Object.freeze({
-	sourceOnTopAlert: async () => (await remote.dialog.showMessageBox({
+	sourceOnTopAlert: async () => (await interop.showMessageBox({
 		type: 'warning',
 		buttons: ['OK', 'Cancel'],
 		message: 'A source on top is not for aesthetics!',
 		detail: 'This option shoud only be selected if the source would obscure important details or appear illegible at the bottom of the video. If you are using this option for any other reason please choose cancel.'
 	})).response,
-	directoryNotFoundAlert: async dir => (await remote.dialog.showMessageBox({
+	directoryNotFoundAlert: async dir => (await interop.showMessageBox({
 		type: 'warning',
 		buttons: ['Continue', 'Abort'],
 		message: 'Directory not found!',
 		detail: `Unable to locate the directory "${dir}". This folder may have been deleted, removed or taken offline. Continue without saving to this directory?`
 	})).response,
-	deleteDirectoryAlert: async label => (await remote.dialog.showMessageBox({
+	deleteDirectoryAlert: async label => (await interop.showMessageBox({
 		type: 'warning',
 		buttons: ['OK', 'Cancel'],
 		message: `Delete ${label ? `"${label}"` : 'directory'}?`
 	})).response,
 	chooseDirectory: async () => {
-		const { filePaths, canceled } = await remote.dialog.showOpenDialog({
+		const { filePaths, canceled } = await interop.showOpenDialog({
 			buttonLabel: 'Choose',
 			properties: ['openDirectory', 'createDirectory']
 		})
