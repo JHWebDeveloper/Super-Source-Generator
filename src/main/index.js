@@ -28,9 +28,10 @@ const openWindow = prefs => new BrowserWindow({
 	}
 })
 
-const getURL = view => url.format(dev ? {
+const getURL = (view = 'index') => url.format(dev ? {
 	protocol: 'http:',
-	host: 'localhost:3000',
+	hostname: 'localhost',
+	port: process.env.PORT,
 	pathname: `${view}.html`,
 	slashes: true
 } : {
