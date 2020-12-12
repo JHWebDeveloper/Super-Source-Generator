@@ -13,8 +13,7 @@ let win = false
 let preferences = false
 let help = false
 
-const openWindow = prefs => new BrowserWindow({
-	...prefs,
+const openWindow = (opts = {}) => new BrowserWindow({
 	show: false,
 	backgroundColor: '#fff',
 	webPreferences: {
@@ -25,7 +24,8 @@ const openWindow = prefs => new BrowserWindow({
 		preload: dev
 			? path.join(__dirname, 'preload', 'babelRegister.js')
 			: path.join(__dirname, 'preload.js')
-	}
+	},
+	...opts
 })
 
 const getURL = (view = 'index') => url.format(dev ? {
