@@ -1,4 +1,4 @@
-import { app, BrowserWindow, Menu, MenuItem, ipcMain } from 'electron'
+import { app, BrowserWindow, Menu, MenuItem, dialog, ipcMain } from 'electron'
 import url from 'url'
 import path from 'path'
 import { loadPrefs, savePrefs } from './modules/preferences'
@@ -260,6 +260,10 @@ ipcMain.on('checkForUpdates', async evt => {
 		evt.reply('updateErr', err)
 	}
 })
+
+ipcMain.handle('getVersion', () => app.getVersion())
+
+ipcMain.handle('showMessageBox', (evt, opts) => dialog.showMessageBox(opts))
 
 const setContextMenu = () => {
 	const textEditor = new Menu()
