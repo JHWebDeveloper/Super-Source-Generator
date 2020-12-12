@@ -1,6 +1,6 @@
 const initTabbedBrowsing = () => {
 	document.body.onkeydown = function (e) {
-		if (e.keyCode !== 9) return
+		if (e.key !== 'Tab') return true
 		
 		this.className = 'accessible'
 		this.onkeydown = false
