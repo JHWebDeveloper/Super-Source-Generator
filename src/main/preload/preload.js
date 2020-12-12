@@ -60,10 +60,9 @@ interop.closeCurrentWindow = () => {
 	remote.getCurrentWindow().close()
 }
 
-interop.checkIfDirectoryExists = async dir =>
-	ipcRenderer.invoke('checkIfDirectoryExists', dir)
+interop.checkIfDirectoryExists = async dir => ipcRenderer.invoke('checkIfDirectoryExists', dir)
 
-interop.getVersion = () => remote.app.getVersion()
+interop.getVersion = () => ipcRenderer.invoke('getVersion')
 
 interop.dialog = Object.freeze({
 	sourceOnTopAlert: async () => (await remote.dialog.showMessageBox({
