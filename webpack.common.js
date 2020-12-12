@@ -8,10 +8,15 @@ const rendererPath = path.resolve('src', 'renderer')
 module.exports = {
 	target: 'web',
 	entry: {
+		common: [
+			'react',
+			'react-dom',
+			'prop-types',
+			path.join(rendererPath, 'css', 'global.css')
+		],
 		index: rendererPath,
 		preferences: path.join(rendererPath, 'preferences.js'),
-		help: path.join(rendererPath, 'help.js'),
-		global: path.join(rendererPath, 'css', 'global.css')
+		help: path.join(rendererPath, 'help.js')
 	},
 	output: {
 		path: path.join(__dirname, 'build'),
