@@ -47,10 +47,6 @@ module.exports = {
 						}
 					}
 				]
-			},
-			{
-				test: /\.(svg|woff2)$/,
-				use: ['url-loader']
 			}
 		]
 	},
