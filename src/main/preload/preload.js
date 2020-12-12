@@ -1,4 +1,4 @@
-import { ipcRenderer, remote, contextBridge } from 'electron'
+import { ipcRenderer, contextBridge } from 'electron'
 import sendMessage from './sendMessage'
 
 const interop = {}
