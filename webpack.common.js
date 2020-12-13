@@ -20,7 +20,7 @@ module.exports = {
 		help: path.join(rendererPath, 'help.js')
 	},
 	output: {
-		path: path.join(__dirname, 'build', 'renderer'),
+		path: path.resolve('build', 'renderer'),
 		filename: '[name].bundle.js',
 		publicPath: '/'
 	},
