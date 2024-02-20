@@ -9,6 +9,7 @@ const initState = {
 	sources: [createNewSourceState()],
 	pasteSources: '',
 	sourcePrefix: true,
+	sourceOnTop: false,
 	saving: false,
 	error: false,
 	message: false,
