@@ -163,7 +163,7 @@ export const generateSources = ctx => async dispatch => {
 
 		if (ctx.sourcePrefix) src.text = `Source: ${src.text}`
 
-		src.data = buildSource(src.text, ctx.renderOutput)
+		src.data = buildSource(src.text, ctx.renderOutput, ctx.sourceOnTop)
 		src.text = src.text.replace(/(?<=^Source):/, '')
 
 		return src
