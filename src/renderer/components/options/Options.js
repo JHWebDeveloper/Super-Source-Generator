@@ -4,7 +4,7 @@ import { SSGContext } from '../../store'
 import { toggleOption } from '../../actions/main'
 
 const Options = () => {
-	const { sourcePrefix, dispatch } = useContext(SSGContext)
+	const { sourcePrefix, sourceOnTop, dispatch } = useContext(SSGContext)
 
 	return (
 		<fieldset name="options">
@@ -15,6 +15,14 @@ const Options = () => {
 					onChange={e => dispatch(toggleOption(e))}
 					checked={sourcePrefix} />
 				Add &quot;Source: &quot; to beginning
+			</label>
+			<label>
+				<input
+					type="checkbox"
+					name="sourceOnTop"
+					onChange={e => dispatch(toggleOption(e))}
+					checked={sourceOnTop} />
+				Place source at top
 			</label>
 		</fieldset>
 	)
